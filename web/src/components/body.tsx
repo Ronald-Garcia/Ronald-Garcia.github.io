@@ -1,11 +1,12 @@
 
-import AboutMe from "./about-me";
-
+// import AboutMe from "./about-me";
+import Projects from "./projects";
 const Body = () => {
     return (
-        <div className="self-start py-5 px-[100px]">
-            <AboutMe></AboutMe>
-        </div>
+        <>
+            {/* <AboutMe></AboutMe> */}
+            <Projects></Projects>
+        </>
     );
 }
 
