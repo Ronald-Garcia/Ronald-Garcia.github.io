@@ -1,11 +1,11 @@
 
-// import AboutMe from "./about-me";
-import Projects from "./projects";
+import AboutMe from "./about-me";
+// import Projects from "./projects";
 const Body = () => {
     return (
         <>
-            {/* <AboutMe></AboutMe> */}
-            <Projects></Projects>
+            <AboutMe></AboutMe>
+            {/* <Projects></Projects> */}
         </>
     );
 }
