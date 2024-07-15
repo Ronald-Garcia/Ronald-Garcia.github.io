@@ -1,8 +1,8 @@
-import Header from "./components/header"
+import Header from "./components/layout/header"
 import Title from "@/components/title"
 import { ThemeProvider } from "./components/theme-provider"
-import Footer from "@/components/footer";
-import Body from "./components/body";
+import Footer from "@/components/layout/footer";
+import Body from "./components/layout/body";
 
 //import AboutMe from "./components/resume-possibly";
 function App() {
