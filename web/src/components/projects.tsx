@@ -37,7 +37,7 @@ const Projects = () => {
               <div className="p-1"> 
                 <Card>
                   <CardContent>
-                    <CardHeader className="mx-auto h-[450px] aspect-square rounded-[150px] overflow-hidden blur-sm">
+                    <CardHeader className="mx-auto h-[450px] aspect-square overflow-hidden blur-sm">
                       <img
                         src={ p.images[0].url }
                         >
