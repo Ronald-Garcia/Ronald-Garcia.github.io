@@ -1,5 +1,16 @@
 import { atom } from "nanostores";
-
+import ECG_active_filter from "../components/data/active_filter.jpg"
+import ECG_complete from "../components/data/complete_circuit.jpg";
+import ECG_start_instrumentation from "../components/data/start_of_instrumentation.jpg";
+import ECG_instrumentation from "../components/data/instrumentation_amp.jpg";
+import DSF_complete from "../components/data/completed_circuit.jpg";
+import ENGINE_complete from "../components/data/completed_engine.jpg";
+import CRANE_struct from "../components/data/crane_structural.jpg";
+import CRANE_transmission from "../components/data/crane_transmission.jpg";
+import CAR_final from "../components/data/final_car (1).jpg";
+import CAR_proto1 from "../components/data/prototype_car_1 (1).jpg";
+import CAR_proto2 from "../components/data/prototype_car_2 (1).jpg";
+import PIANO_final from "../components/data/piano_final.jpg";
 let id = 1;
 
 type ProjectType = {
@@ -77,7 +88,7 @@ export const $projectList = atom<ProjectType[]>([
         dateEnded: new Date(2024, 6),
         images: [
             {
-                url: "https://drive.google.com/thumbnail?id=1Lkdnfn2LJYzfo8312YBemDGUekT5iLYM",
+                url: ENGINE_complete,
                 caption: "Image stuff"
             }
         ]
@@ -89,10 +100,15 @@ export const $projectList = atom<ProjectType[]>([
         dateEnded: new Date(2024, 6),
         images: [
             {
-                url: "https://drive.google.com/thumbnail?id=1TxBs04ym2h9DVW93yYZEqHiMxDgOftBv",
-                caption: "Image lalalala"
+                url: CRANE_struct,
+                caption: "The structure of the crane."
+            },
+            {
+                url: CRANE_transmission,
+                caption: "The gear transmission system of the crane with a gain of 18."
             }
         ]
+        
     }),
     createProject({
         name: "Gatekeeper Redesign.",
@@ -108,22 +124,72 @@ export const $projectList = atom<ProjectType[]>([
     }),
     createProject({
         name: "Mechanically Powered Car",
-        description: "WSE Mechanical Engineering competition! A race to see which design places first...",
+        description: "WSE Mechanical Engineering competition! A race to see which design places first in the Mechanical Engineering class of 2026.",
         dateStarted: new Date(2022, 8),
-        dateEnded: new Date(2022, 12)
+        dateEnded: new Date(2022, 12),
+        images: [
+            {
+                url: CAR_proto1,
+                caption: "Image lalalala"
+            },
+            {
+                url: CAR_proto2,
+                caption: "The prototype for the free wheel mechanism (uses a clutch system allow rotation in one direction, but not the other."
+            },
+            {
+                url: CAR_final,
+                caption: "The final car, titled the Joe Biden Car."
+            }
+        ]
     }),
     createProject({
         name: "Arduino-Powered Piano!",
         description: "WSE Mechanical Engineering exhibition! An exhibit displaying the cultures of different through a series of games... ",
         dateStarted: new Date(2023, 1),
-        dateEnded: new Date(2023, 6)
+        dateEnded: new Date(2023, 6),
+        images: [
+            {
+                url: PIANO_final,
+                caption: "The final piano structure, with arduino circuits on the inside."
+            }
+        ]
     }),
     createProject({
         name: "Digital Security!",
         description: "A four digit pin that runs on digital logic!",
         dateStarted: new Date(2024, 1),
-        dateEnded: new Date(2024, 6)
+        dateEnded: new Date(2024, 6),
+        images: [
+            {
+                url: DSF_complete,
+                caption: "Thumbnail"
+            }
+        ]
     }),
+    createProject({
+        name: "Lightweight ECG.",
+        description: "An ECG to read pulses using elementary analog components! This includes an instrumentation amplifer with a gain of 500. Tested and prototyped with LTSpice and Scopy.",
+        dateStarted: new Date(2023, 8),
+        dateEnded: new Date(2023, 12),
+        images: [
+            {
+                url: ECG_complete,
+                caption: "The completed circuit."
+            },
+            {
+                url: ECG_start_instrumentation,
+                caption: "The start of the instrumentation amplifier."
+            }, 
+            {
+                url: ECG_instrumentation,
+                caption: "The completed instrumentation amplifier."
+            }, 
+            {
+                url: ECG_active_filter,
+                caption: "The active filter to remove noise that is outside the range of the usual frequency of heart pulses."
+            }
+        ]
+    })
 ]);
 
 export const getProjectById = (id: number) => {

@@ -4,6 +4,7 @@ import AboutMe from "../about-me";
 import Projects from "../projects";
 import { $router } from "@/lib/router";
 import ProjectPage from "../project-page";
+import { ScrollArea } from "../ui/scroll-area";
 const Body = () => {
 
     const page = useStore($router);
@@ -17,11 +18,14 @@ const Body = () => {
     }
 
     return (
-        <div className="w-full max-w-[720px] self-center">
-            {page.route === "about" && <AboutMe></AboutMe>}
-            {page.route === "projects" && <Projects></Projects>}
-            {page.route === "project" && <ProjectPage></ProjectPage>}
-        </div>
+        <ScrollArea className="self-center">
+            <div className="w-full max-w-[720px] self-center">
+                {page.route === "about" && <AboutMe></AboutMe>}
+                {page.route === "projects" && <Projects></Projects>}
+                {page.route === "project" && <ProjectPage></ProjectPage>}
+            </div>
+
+        </ScrollArea>
     );
 }
 

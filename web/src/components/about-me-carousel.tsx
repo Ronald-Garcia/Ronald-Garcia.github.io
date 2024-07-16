@@ -19,7 +19,7 @@ import { getAllProjects } from "@/lib/store";
 const AboutMeCarousel = () => {
 
   const plugin = useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true})
+    Autoplay({ delay: 5000, stopOnInteraction: true})
   )
 
   const projectList = getAllProjects();
@@ -39,7 +39,8 @@ const AboutMeCarousel = () => {
                   <CardContent>
                     <CardHeader className="h-[500px]">
                       <img
-                        className="rounded-[150px]"
+                        className="blur rounded-[150px]"
+                        style={{filter: 'blur(10px)'}}
                         src={ p.images[0].url }
                         >
                       </img>
