@@ -3,6 +3,8 @@ import ResumeDropdown from "../resume-dropdown";
 import { Button } from "../ui/button";
 import { $router } from "@/lib/router";
 import { openPage } from "@nanostores/router";
+import ContactMe from "../contact-me";
+import ExperiencesDropdown from "../experiences-dropdown";
 
 const Header = () => {
 
@@ -20,16 +22,12 @@ const Header = () => {
     openPage($router, "projects");
   }
 
-  const navigateToContact = () => {
-    openPage($router, "contact");
-  }
-
   return (
     <div className="flex justify-center gap-5 p-1 border-b">
       <Button variant="link" onClick={() => navigateToHome()}>About Me</Button>
       <ResumeDropdown></ResumeDropdown>
-      <Button variant="link" onClick={() => navigateToProjects()}>Projects</Button>
-      <Button variant="link" onClick={() => navigateToContact()}>Contact Me</Button>
+      <ExperiencesDropdown></ExperiencesDropdown>
+      <ContactMe></ContactMe>
     </div>
   );
 }

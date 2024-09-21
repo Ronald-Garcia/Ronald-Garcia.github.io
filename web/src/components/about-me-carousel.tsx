@@ -41,7 +41,7 @@ const AboutMeCarousel = () => {
                       <img
                         className="blur rounded-[150px]"
                         style={{filter: 'blur(10px)'}}
-                        src={ p.images[0].url }
+                        src={ p.thumbnail.url }
                         >
                       </img>
                     </CardHeader>

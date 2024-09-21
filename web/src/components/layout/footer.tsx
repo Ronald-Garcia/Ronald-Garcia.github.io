@@ -10,7 +10,7 @@ const Footer = () => {
         return null;
     }
     return (
-        <div className="absolute bottom-0 mx-auto w-full p-4">
+        <div className="mx-auto w-full p-4">
             {page.route === "project" && <ProjectPagination></ProjectPagination>}
 
             <ModeToggle></ModeToggle>

@@ -18,7 +18,7 @@ const Body = () => {
     }
 
     return (
-        <ScrollArea className="self-center">
+        <ScrollArea className="self-center h-full">
             <div className="w-full max-w-[720px] self-center">
                 {page.route === "about" && <AboutMe></AboutMe>}
                 {page.route === "projects" && <Projects></Projects>}

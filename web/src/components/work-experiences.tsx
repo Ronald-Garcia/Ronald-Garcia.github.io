@@ -16,7 +16,7 @@ import Autoplay from "embla-carousel-autoplay"
 import { useRef } from "react";
 import { getAllProjects } from "@/lib/store";
 
-const Projects = () => {
+const WorkExperiences = () => {
 
   const plugin = useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true})
@@ -93,4 +93,4 @@ const Projects = () => {
 
 }
 
-export default Projects;
+export default WorkExperiences;

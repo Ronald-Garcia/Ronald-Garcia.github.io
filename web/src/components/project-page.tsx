@@ -1,13 +1,22 @@
 import { $router } from "@/lib/router";
-import { getProjectById } from "@/lib/store";
+import { FileType, getProjectById, ImageType, SectionType } from "@/lib/store";
 import { useStore } from "@nanostores/react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Separator } from "@/components/ui/separator";
+import { FileTextIcon } from "@radix-ui/react-icons";
+import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
+
 
 
 const ProjectPage = () => {
 
     const page = useStore($router);
+
+    const [skillsList, setSkillsList] = useState<string[]>([]);
+    const [filesList, setFilesList] = useState<FileType[]>([]);
+    const [sectionList, setSectionList] = useState<SectionType[]>([]);
+    const [thumbnail, setThumbnail] = useState<ImageType>({ url: "", caption: ""});
 
     if (!page || page.route !== "project") {
         return null;
@@ -21,6 +30,16 @@ const ProjectPage = () => {
             </>
         )
     }
+    useEffect(() => {
+        if (project.files) {
+            setFilesList(project.files)
+        } 
+
+        setSkillsList(project.skills);
+        setSectionList(project.sections);
+        setThumbnail(project.thumbnail);
+    }, [project])
+
 
     return (
         <>
@@ -35,32 +54,35 @@ const ProjectPage = () => {
                             {project.description}
                         </CardDescription>
                         <p className="text-xs font-light">
-                            {project.dateStarted.toLocaleDateString("en-US", {
+                            {project.dateEnded !== "Now" ? project.dateStarted.toLocaleDateString("en-US", {
                                 day: project.dateStarted.getMonth() === project.dateEnded.getMonth() ? 'numeric' : undefined,
                                 month: 'short',
                                 year: 'numeric',
-                            })} - {project.dateEnded.toLocaleDateString("en-US",{
+                            }) : project.dateStarted.toLocaleDateString("en-US", {
+                                month: 'short',
+                                year: 'numeric',
+                            })} - {project.dateEnded !== "Now" ? project.dateEnded.toLocaleDateString("en-US",{
                                 day: project.dateStarted.getMonth() === project.dateEnded.getMonth() ? 'numeric' : undefined,
                                 month: "short",
                                 year: "numeric"
-                            })}
+                            }) : "now"}
                         </p>
 
                         </div>
                         <div className="w-[200px] rounded-lg">
                             <img
                             className="rounded-[25px]"
-                            src={project.images[0].url}>
+                            src={thumbnail.url}>
                             </img>
                             <p className="font-light text-[8pt]">
-                                {project.images[0].caption}
+                                {thumbnail.caption}
                             </p>
                         </div>
                     </CardHeader>
 
                     <Separator></Separator>
                     <div className="p-10 flex-col space-y-5">
-                        {project.sections.map(s => {
+                        {sectionList.map(s => {
                             return (
                                 <div key={s.title + s.content}>
                                     <p 
@@ -73,12 +95,83 @@ const ProjectPage = () => {
                                         key={s.content}>
                                         {s.content}
                                     </p>
+                                    { s.images && <div key={s.title + s.content}
+                                    className="flex justify-center gap-2">
+                                            {s.images.map(i => {
+                                            
+                                            return (
+                                                <div className="w-[200px] rounded-lg">
+                                                <img
+                                                    className="rounded-[25px]"
+                                                    src={i.url}>
+                                                </img>
+                                                <p className="font-light text-[8pt]">
+                                                    {i.caption}
+                                                </p>
+                                                </div>
+                                            );
+                                        })}
+                                    
+                                    </div>}
 
                                 </div>                                
                             );
                         })}
+                        <Separator></Separator>
+                        <div>
+                            <p className="text-md font-bold">
+                                Skills
+                            </p>
+                            <ul
+                                className="list-disc">
+                                {skillsList.map(s => {
+                                    return (
+                                        <li key={`${project.id} skills ${s}`}>
+                                            <p className="text-sm font-thin">
+                                                {s}
+                                            </p>
+                                        </li>
+                                    )
+                                })}
 
+                            </ul>
+                        </div>
+                        {project.files && <div>
+                            <p 
+                                key={project.id}
+                                className="text-md font-bold">
+                                Files/Links
+                            </p>
+                            <ul>
+                                {filesList.map(f => {
+                                    return (
+                                        <li key={`${project.id} files ${f.title}`}>
+                                            <a
+                                                href={f.url}
+                                                download
+                                                target="_blank"
+                                                >
+
+                                            <Button 
+                                                variant="link"
+                                                className="text-sm font-thin w-fit">
+                                            <div className="flex w-fit">
+                                                <FileTextIcon>
+                                                </FileTextIcon>        
+                                                {f.title}
+                                            </div>
+                                            </Button>
+
+                                            </a>
+
+                                        </li>
+                                    )
+                                })}
+
+                            </ul>
+                        </div>}
                     </div>
+
                 </CardContent>
             </Card>
         </>

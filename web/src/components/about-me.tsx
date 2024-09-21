@@ -11,6 +11,12 @@ const AboutMe = () => {
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="p-5 shrink">
+                    <div >
+                        <img
+                        className="mx-auto rounded-[100px]"
+                        src="../../RonaldGarcia.jpg">
+                        </img>
+                    </div>
                     <div>
                         <p className="text-sm font-light">
                             My name is Ronald Garcia, and I am a Cuban-American from Homestead, Florida (just south of Miami).
