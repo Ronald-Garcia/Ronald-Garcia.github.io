@@ -14,16 +14,16 @@ import PIANO_final from "../components/data/piano_final.jpg";
 import WEBSITE_final from "../components/data/website.png";
 
 let pid = 1;
-let aid = 1;
+// let aid = 1;
 
-type AboutMeType = {
-    id: number,
-    name: string,
-    description: string,
-    dateStarted: Date,
-    dateEnded: Date,
-    image: ImageType,
-}
+// type AboutMeType = {
+//     id: number,
+//     name: string,
+//     description: string,
+//     dateStarted: Date,
+//     dateEnded: Date,
+//     image: ImageType,
+// }
 
 type ProjectType = {
     id: number,
@@ -37,17 +37,17 @@ type ProjectType = {
     files?: FileType[]
 }
 
-type WorkType = {
-    id: number,
-    name: string,
-    description: string,
-    dateStarted: Date,
-    dateEnded: Date | "Now",
-    sections: SectionType[],
-    sthumbnail: ImageType,
-    skills: string[],
-    files?: FileType[]
-}
+// type WorkType = {
+//     id: number,
+//     name: string,
+//     description: string,
+//     dateStarted: Date,
+//     dateEnded: Date | "Now",
+//     sections: SectionType[],
+//     sthumbnail: ImageType,
+//     skills: string[],
+//     files?: FileType[]
+// }
 
 export type SectionType = {
     title: string,
@@ -507,7 +507,7 @@ export const getAllProjects = () => {
     return $projectList.get().sort((p1, p2) => p2.dateStarted.getTime() - p1.dateStarted.getTime());
 }
 
-
+/*
 const createAboutMe = ({
     name,
     description,
@@ -533,3 +533,4 @@ export const $aboutMeList = atom<AboutMeType[]>([
 
 ]);
 
+*/

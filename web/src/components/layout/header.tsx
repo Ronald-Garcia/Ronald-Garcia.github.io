@@ -18,10 +18,6 @@ const Header = () => {
     openPage($router, "about");
   }
 
-  const navigateToProjects = () => {
-    openPage($router, "projects");
-  }
-
   return (
     <div className="flex justify-center gap-5 p-1 border-b">
       <Button variant="link" onClick={() => navigateToHome()}>About Me</Button>
