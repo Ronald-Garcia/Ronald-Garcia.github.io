@@ -17,7 +17,7 @@ function App() {
         </div>
         <Body></Body>
         <Separator></Separator>
-        <div className="transition-opacity h-[10%] opacity-30 hover:opacity-100 duration-300">
+        <div className="transition-opacity w-max-full h-[10%] opacity-30 hover:opacity-100 duration-300">
           <Footer></Footer>
         </div>
       </div>

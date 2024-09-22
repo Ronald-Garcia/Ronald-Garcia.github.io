@@ -11,11 +11,27 @@ import CAR_final from "../components/data/final_car (1).jpg";
 import CAR_proto1 from "../components/data/prototype_car_1 (1).jpg";
 import CAR_proto2 from "../components/data/prototype_car_2 (1).jpg";
 import PIANO_final from "../components/data/piano_final.jpg";
+import RA_shot from "../components/data/RonaldGarcia_RA.jpg";
+import MANU_TA_thumbnail from "../components/data/ToolLight.gif";
+
 import WEBSITE_final from "../components/data/website.png";
 
 let pid = 1;
 // let aid = 1;
+let rid = 1;
 
+
+export type RoleType = {
+    id: number,
+    name: string,
+    description: string,
+    dateStarted: Date,
+    dateEnded: Date | "Now",
+    sections: SectionType[],
+    thumbnail: ImageType,
+    skills: string[],
+    files?: FileType[]
+}
 // type AboutMeType = {
 //     id: number,
 //     name: string,
@@ -25,7 +41,7 @@ let pid = 1;
 //     image: ImageType,
 // }
 
-type ProjectType = {
+export type ProjectType = {
     id: number,
     name: string,
     description: string,
@@ -114,6 +130,46 @@ const createProject = (
     return newProject;
 }
 
+
+const createRole = (
+    {
+        name,
+        description,
+        dateStarted = new Date(),
+        dateEnded = new Date(),
+        sections = [],
+        thumbnail = {
+            url: "",
+            caption: ""
+        },
+        skills = [],
+        files = undefined
+    } : {
+        name: string,
+        description: string,
+        dateStarted?: Date,
+        dateEnded?: Date | "Now",
+        sections?: SectionType[]
+        thumbnail?: ImageType,
+        skills?: string[],
+        files?: FileType[] | undefined
+    }
+) => {
+    const newRole: RoleType = {
+        id: rid,
+        name,
+        description,
+        dateStarted,
+        dateEnded,
+        sections,
+        thumbnail,
+        skills,
+        files
+    }
+    rid = rid + 1;
+
+    return newRole;
+}
 /** 
  * --- TODO ---
  * Description of all the parts manufactured.
@@ -507,6 +563,159 @@ export const getAllProjects = () => {
     return $projectList.get().sort((p1, p2) => p2.dateStarted.getTime() - p1.dateStarted.getTime());
 }
 
+
+const ra_role = createRole({
+    name: "Johns Hopkins Resident Advisor",
+    description: "Enhancing community for Johns Hopkins students!",
+    dateStarted: new Date(2024, 8),
+    dateEnded: "Now",
+    thumbnail: {
+        url: RA_shot,
+        caption: "RA Headshot"
+    },
+    sections: [
+        createSection("Overview",
+            "I worked in a close-knit team of 75 other students to foster community for the freshman-sophomore classes of Johns Hopkins University. This includes budgeting and hosting events, ensuring the safety of students, and fostering a welcoming community.",
+        )
+    ],
+    skills: [
+        "Budgeting and hosting events for students",
+        "Designing flyers on Canva",
+        "Working in a diverse team of students, and providing for a diverse community",
+        "DEI trained",
+        "Trained to handle emergency situations with students"
+    ]
+})
+
+
+const manufact_ta_role = createRole({
+    name: "Manufacturing Student TA",
+    description: "Working with the machinists of Johns Hopkins' WSE department to develop solutions for other entities affiliated with campus!",
+    dateStarted: new Date(2023, 8),
+    dateEnded: "Now",
+    thumbnail: {
+        url: MANU_TA_thumbnail,
+        caption: "A close up of a milling operation."
+    },
+    sections: [
+        createSection("Overview",
+            "I worked with the WSE Machine Shop to provide services for JHU affiliates! This includes experiment apparatuses, integrated systems (like WSE Identify!), and other machineable parts!",
+        ),
+    ],
+    skills: [
+        "Integrated Mechanical Engineering principles with Computer Engineering ideas!",
+        "PCB analysis",
+        "Advanced Solidworks design",
+        "Meeting and consulting with clients about experimenting apparatus",
+        "WSE Identify (see projects tab!)",
+        "Working with fellow students and machinists",
+        "Experience with 3D printing on a Stratasys F370 printer",
+        "Usage of the Mill, Lathe, Wire EDM, and Waterjet"
+    ],
+})
+
+const learning_den_role = createRole({
+    name: "Johns Hopkins University Learning Den Tutor",
+    description: "One-on-one personalized tutoring for students in the class of their choice!",
+    dateStarted: new Date(2023, 8),
+    dateEnded: "Now",
+    sections: [
+        createSection("Overview",
+            "I design personalized tutoring sessions for over 20 students that request personalized tutoring through the application Penji."
+        ),
+        createSection("Classes Tutored",
+            `Calculus I, II for Biological sciences and Engineers,
+            
+            Calculus III,
+            
+            Differential Equations,
+            
+            Linear Algebra,
+            
+            Electronics & Instrumentation I,
+            
+            Intro to Mechanics I & II,
+            
+            Mechanics-Based Design,
+            
+            Thermodynamics,
+            
+            Statics & Mechanics of Materials,
+            
+            Dynamics,
+            
+            Intermediate Programming,
+            
+            Data Structures,
+            
+            Computer System Fundamentals,
+            
+            Gateway series of programming classes,
+            
+            Fullstack Javascript`
+        )
+    ],
+    skills: [
+        "Developing lesson plans for students in subjects at all college levels.",
+        "Writing up documents using LaTeX and Typst",
+    ]
+})
+
+const cap_ed_role = createRole({
+    name: "Capital Educators SAT Teacher",
+    description: "Teach a class of no more than 10 high school students on a weekly basis!",
+    dateStarted: new Date(2024, 0),
+    dateEnded: "Now",
+    sections: [
+        createSection("Overview",
+            "Teach a class of no more than 10 high school students to improve their SAT/ACT scores by over 200 points. This involves practicing lesson plans to teach not only the mathematical topics, but also test taking techniques."
+        )
+    ],
+    skills: [
+        "Effectively teaching to a small class size of high school students",
+        "Synthesizing information into an engaging presentation"
+    ]
+})
+
+const physics_la_role = createRole({
+    name: "Learning Assistant for Johns Hopkins Physics",
+    description: "Hosting office hours and leading TA sections for Physics at Hopkins!",
+    dateStarted: new Date(2024, 0),
+    dateEnded: "Now",
+    sections: [
+        createSection("Overview",
+            "Lead TA sections and office hours for Physics at Hopkins! Learned to teach difficult material in a simple way, adjusting based on the students. Collaborated with TAs to conduct sections."
+        )
+    ],
+    skills: [
+        "Presenting course material in a format that is easy for students to understand",
+        "Insight on physical intuition that aids explanation and interpretation of physics problems",
+        "Teaching using a mix of Socratic and explanatory structures."
+    ]
+})
+
+const peer_leader_role = createRole({
+    name: "Hop-In Peer Leader",
+    description: "Fostered community amongst 40 incoming First-generation limited income (FLI) students!",
+    dateStarted: new Date(2023, 5),
+    dateEnded: new Date(2024, 4),
+})
+
+export const $roleList = atom<RoleType[]>([
+    ra_role,
+    manufact_ta_role,
+    learning_den_role,
+    cap_ed_role,
+    physics_la_role
+])
+
+export const getRoleById = (id: number) => {
+    return $roleList.get().find(r => r.id === id)
+}
+
+export const getAllRoles = () => {
+    return $roleList.get().sort((r1, r2) => r2.dateStarted.getTime() - r1.dateStarted.getTime());
+}
 /*
 const createAboutMe = ({
     name,

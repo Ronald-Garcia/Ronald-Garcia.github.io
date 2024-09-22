@@ -9,6 +9,9 @@ const ExperiencesDropdown = () => {
     const navigateToProjects = () => {
         openPage($router, "projects");
     }
+    const navigateToRoles = () => {
+        openPage($router, "roles");
+    }
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -17,6 +20,9 @@ const ExperiencesDropdown = () => {
             <DropdownMenuContent>
                 <DropdownMenuItem>
                     <Button variant="link" onClick={() => navigateToProjects()}>Projects</Button>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Button variant="link" onClick={() => navigateToRoles()}>Roles</Button>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -5,5 +5,7 @@ export const $router = createRouter({
     about: "/",
     contact: "/contact",
     projects: "/project",
-    project: "/project/:projectId",
+    roles: "/role",
+    project: "/project/:id",
+    role: "/role/:id",
 })
