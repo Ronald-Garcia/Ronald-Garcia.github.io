@@ -699,6 +699,7 @@ const peer_leader_role = createRole({
     description: "Fostered community amongst 40 incoming First-generation limited income (FLI) students!",
     dateStarted: new Date(2023, 5),
     dateEnded: new Date(2024, 4),
+
 })
 
 export const $roleList = atom<RoleType[]>([
@@ -706,7 +707,8 @@ export const $roleList = atom<RoleType[]>([
     manufact_ta_role,
     learning_den_role,
     cap_ed_role,
-    physics_la_role
+    physics_la_role,
+    peer_leader_role
 ])
 
 export const getRoleById = (id: number) => {
